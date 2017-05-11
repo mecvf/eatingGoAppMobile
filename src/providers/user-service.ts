@@ -1,31 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
-  data: any;
 
-  constructor(private http: Http) {
-    this.data = null;
-  }
+  constructor(
+    private http: Http
+  ) {}
 
-  load() {
-    if (this.data) {
-      // already loaded data
-      return Promise.resolve(this.data);
-    }
-
-    // don't have the data yet
-    return new Promise(resolve => {
-      this.http.get('https://randomuser.me/api/?results=25')
-        .map(res => res.json())
-        .subscribe(data => {
-          this.data = data.results;
-          resolve(this.data);
-        });
-    });
+  getUsers() {
+    return this.http.get('https://randomuser.me/api/?results=25')
+    .map(res => res.json())
+    .toPromise();
   }
 }
 

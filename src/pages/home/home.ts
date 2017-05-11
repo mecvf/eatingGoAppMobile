@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {UserService} from '../../providers/user-service';
+import { Component } from '@angular/core';
+import { IonicPage, NavController } from 'ionic-angular';
+import { UserService } from '../../providers/user-service';
 
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -13,10 +14,15 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public userService: UserService
-  ) {
-    this.userService.load()
+  ) {}
+
+  ionViewDidLoad(){
+    this.userService.getUsers()
     .then(data => {
       this.users = data;
-    }) ;
+    })
+    .catch(error =>{
+      console.error(error);
+    })
   }
 }
