@@ -1,4 +1,4 @@
-## Repositorio basado en el artículo [Usando la cámara con Ionic, en 4 pasos](https://www.ion-book.com/blog/ionic2/camera-and-ionic/)
+## Repositorio basado en el artículo [Conectado una REST API con Ionic](https://www.ion-book.com/blog/ionic2/rest-api-with-ionic-2/)
 
 Este proyecto usa:
 
