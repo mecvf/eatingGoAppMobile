@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { UserService } from '../../providers/user-service';
+import { MenuService } from '../../providers/menu-service';
+import { TipoServiceProvider } from '../../providers/tipo-service';
 
 @IonicPage()
 @Component({
@@ -8,21 +9,34 @@ import { UserService } from '../../providers/user-service';
   templateUrl: 'home.html',
 })
 export class HomePage {
-
-  users: any[] = [];
+  
+  menus: any[] = [];
+  tipos: any[] = [];
 
   constructor(
     public navCtrl: NavController,
-    public userService: UserService
+    public menuService: MenuService,
+    public tipoServiceProvider: TipoServiceProvider
   ) {}
 
   ionViewDidLoad(){
-    this.userService.getUsers()
+  
+    this.menuService.getMenus()
     .then(data => {
-      this.users = data.results;
+      this.menus = data.results;
     })
     .catch(error =>{
       console.error(error);
     })
+
+    this.tipoServiceProvider.getTipos()
+    .then(data2 => {
+      this.tipos = data2.results;
+    })
+    .catch(error2 =>{
+      console.error(error2);
+    })
+
+
   }
 }

@@ -7,7 +7,8 @@ import { MyApp } from './app.component';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
-import { UserService } from '../providers/user-service';
+import { MenuService } from '../providers/menu-service';
+import { TipoServiceProvider } from '../providers/tipo-service';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,9 @@ import { UserService } from '../providers/user-service';
   providers: [
     SplashScreen,
     StatusBar,
-    UserService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    MenuService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    TipoServiceProvider
   ]
 })
 export class AppModule {}

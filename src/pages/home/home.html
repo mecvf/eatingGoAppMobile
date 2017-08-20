@@ -1,19 +1,45 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      Demo 103
+      EatingGo
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let user of users">
+<ion-item *ngFor="let m of menus">   
+  <ion-avatar item-start>
+    <h1>Menu del día</h1> 
+    <h2>{{ m.menu.fecha }}</h2>
+  </ion-avatar>
+</ion-item>
+
+  <ion-item *ngFor="let t of tipos">
+    <ion-avatar item-start>
+        <h2>{{t.nombre}}  </h2>
+        
+    </ion-avatar>
+
+    <div *ngFor="let m of menus">
+
       <ion-avatar item-start>
-        <img [src]="user.picture.medium">
+        <div *ngFor="let producto of m.productos">
+          <div *ngIf="t.id==producto.tipo_id">
+          
+          <p> {{ producto.nombre}}</p>
+          </div>
+        </div>
       </ion-avatar>
-      <h2>{{ user.name.first | uppercase }}</h2>
-      <p>{{ user.email }}</p>
-    </ion-item>
+
+    </div>
+
+  </ion-item>
+  <ion-list>
+    
+     
+
+    
+
   </ion-list>
+
 </ion-content>
